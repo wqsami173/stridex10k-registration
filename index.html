@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StrideX 10K Registration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f6f9fc 0%, #eef2f5 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 1.5rem;
+    }
+
+    .card {
+      max-width: 760px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      padding: 2.5rem 2.2rem;
+      transition: all 0.2s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #0b1b2f;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 2px solid #e9edf2;
+      padding-bottom: 1rem;
+    }
+
+    h1 small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #4b5b6e;
+      margin-left: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #1f2a3e;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    label .required {
+      color: #b22234;
+      margin-left: 2px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 1.5px solid #dce1e9;
+      border-radius: 1.25rem;
+      background: #fbfdff;
+      transition: 0.2s;
+      color: #0b1b2f;
+      font-weight: 450;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #2b6c9e;
+      box-shadow: 0 0 0 4px rgba(43, 108, 158, 0.15);
+      background: #ffffff;
+    }
+
+    .inline-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: center;
+    }
+
+    .inline-group .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 450;
+      color: #1f2a3e;
+    }
+
+    .inline-group input[type="radio"] {
+      width: auto;
+      margin-right: 0.15rem;
+      accent-color: #1f4e7a;
+      transform: scale(1.05);
+      flex-shrink: 0;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 2rem;
+      background: #f2f6fb;
+      padding: 0.6rem 1.2rem;
+      border-radius: 2rem;
+    }
+
+    .event-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem 2.8rem;
+      background: #f4f8fe;
+      padding: 0.9rem 1.5rem;
+      border-radius: 2rem;
+      margin-top: 0.25rem;
+    }
+
+    .event-checkboxes label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 500;
+      color: #1a2c44;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .event-checkboxes input[type="checkbox"] {
+      width: 1.2rem;
+      height: 1.2rem;
+      accent-color: #1f5a8a;
+      margin: 0;
+      flex-shrink: 0;
+      border-radius: 6px;
+    }
+
+    .price-display {
+      background: #e8eff8;
+      padding: 0.9rem 1.8rem;
+      border-radius: 3rem;
+      display: inline-block;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #05314f;
+      margin: 0.5rem 0 0.25rem;
+      letter-spacing: 0.5px;
+      border: 1px solid #c0d4e8;
+    }
+
+    .price-display span {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #1f4970;
+      margin-right: 0.5rem;
+    }
+
+    .price-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      background: #f2f7ff;
+      border-radius: 2.5rem;
+      padding: 0.8rem 1.8rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .total-amount {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #023047;
+    }
+
+    .btn-submit {
+      background: #0b2b44;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 3rem;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.15s;
+      letter-spacing: 0.3px;
+      margin-top: 1rem;
+      border: 1px solid #1a3f5c;
+      box-shadow: 0 6px 0 #061a2b;
+      transform: translateY(-2px);
+    }
+
+    .btn-submit:hover {
+      background: #12406b;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 #061a2b;
+    }
+
+    .btn-submit:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 #061a2b;
+    }
+
+    .footnote {
+      font-size: 0.8rem;
+      color: #4b627c;
+      margin-top: 1.5rem;
+      text-align: center;
+      border-top: 1px solid #dde4ed;
+      padding-top: 1.2rem;
+    }
+
+    .row-duo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
+    }
+
+    /* student id upload - initially hidden */
+    .student-id-wrapper {
+      display: none;
+      margin-top: 0.2rem;
+      padding: 0.75rem 1rem 0.25rem 1rem;
+      background: #f0f6fe;
+      border-radius: 1.8rem;
+      border: 1px dashed #2b6c9e;
+      transition: 0.2s;
+    }
+
+    .student-id-wrapper.visible {
+      display: block;
+    }
+
+    .student-id-wrapper label {
+      font-weight: 500;
+      color: #0b2b44;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .student-id-wrapper input[type="file"] {
+      border: 1px solid #b8cee6;
+      background: white;
+      padding: 0.6rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    .file-hint {
+      font-size: 0.8rem;
+      color: #3d6184;
+      margin-left: 0.2rem;
+      font-weight: 400;
+    }
+
+    @media (max-width: 550px) {
+      .card { padding: 1.8rem; }
+      .row-duo { grid-template-columns: 1fr; }
+      .event-checkboxes { flex-direction: column; gap: 0.6rem; }
+      .inline-group { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>
+      📋 StrideX 10K Registration
+    </h1>
+
+    <form id="registrationForm">
+      <!-- Name -->
+      <div class="form-group">
+        <label for="fullName">Full Name <span class="required">*</span></label>
+        <input type="text" id="fullName" placeholder="" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email address <span class="required">*</span></label>
+        <input type="email" id="email" placeholder="" required>
+      </div>
+
+      <!-- Phone / WhatsApp -->
+      <div class="form-group">
+        <label for="phone">Phone / WhatsApp <span class="required">*</span></label>
+        <input type="tel" id="phone" placeholder="" required>
+      </div>
+
+      <!-- Category: student / regular -->
+      <div class="form-group">
+        <label>Category <span class="required">*</span></label>
+        <div class="radio-group" id="categoryGroup">
+          <label class="radio-item">
+            <input type="radio" name="category" value="student" checked> 🎓 Student
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="category" value="regular"> 👤 Regular
+          </label>
+        </div>
+      </div>
+
+      <!-- Student ID Card upload (conditional) -->
+      <div class="form-group student-id-wrapper visible" id="studentIdWrapper">
+        <label for="studentIdFile">
+          🪪 Student ID Card Photo <span class="required">*</span>
+          <span class="file-hint">(jpg, png, pdf, max 5MB)</span>
+        </label>
+        <input type="file" id="studentIdFile" accept=".jpg,.jpeg,.png,.pdf" >
+      </div>
+
+      <!-- Gender: male / female -->
+      <div class="form-group">
+        <label>Gender <span class="required">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="gender" value="male" checked> Male
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="gender" value="female"> Female
+          </label>
+        </div>
+      </div>
+
+      <!-- Events (checkboxes) -->
+      <div class="form-group">
+        <label>Select Events<span class="required">*</span></label>
+        <div  class="event-checkboxes" id="eventCheckboxes">
+          <label>
+            <input type="checkbox" id="event1" value="event1" checked> Season 1
+          </label>
+          <label>
+            <input type="checkbox" id="event2" value="event2"> Season 2
+          </label>
+        </div>
+      </div>
+
+      <!-- Dynamic total -->
+      <div class="price-box">
+        <span style="font-weight: 500; color: #1f3a57;">Total Amount</span>
+        <span class="total-amount" id="totalDisplay">649 ৳</span>
+      </div>
+
+      <!-- Payment method -->
+      <div class="form-group">
+        <label for="paymentMethod">Payment Method <p>(Send Money)</p> <span class="required">*</span></label>
+        <select id="paymentMethod">
+          <option value="bkash">Bkash — 01624577374</option>
+          <option value="nagad">Nagad — 01687414286</option>
+          <option value="rocket">Rocket — 01624577374</option>
+        </select>
+      </div>
+
+      <!-- Personal Bkash/Nagad/Rocket number -->
+      <div class="form-group">
+        <label for="personalNumber">Your personal Bkash / Nagad / Rocket Number <span class="required">*</span></label>
+        <input type="text" id="personalNumber" placeholder="" required>
+      </div>
+
+      <!-- Transaction ID -->
+      <div class="form-group">
+        <label for="transactionId">Transaction ID <span class="required">*</span></label>
+        <input type="text" id="transactionId" placeholder="" required>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn"> Register now</button>
+    </form>
+
+    <div class="footnote">
+      
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const form = document.getElementById('registrationForm');
+      const totalDisplay = document.getElementById('totalDisplay');
+
+      // DOM elements
+      const categoryRadios = document.querySelectorAll('input[name="category"]');
+      const event1 = document.getElementById('event1');
+      const event2 = document.getElementById('event2');
+      const studentIdWrapper = document.getElementById('studentIdWrapper');
+      const studentIdFile = document.getElementById('studentIdFile');
+
+      // Helper: get selected category value
+      function getCategory() {
+        for (let radio of categoryRadios) {
+          if (radio.checked) return radio.value;
+        }
+        return 'student'; // fallback
+      }
+
+      // Toggle student ID field visibility + required attribute
+      function toggleStudentIdField() {
+        const category = getCategory();
+        if (category === 'student') {
+          studentIdWrapper.classList.add('visible');
+          studentIdFile.setAttribute('required', 'required');
+          // also add a visual hint
+        } else {
+          studentIdWrapper.classList.remove('visible');
+          studentIdFile.removeAttribute('required');
+        }
+      }
+
+      // Core pricing logic
+      function calculateTotal() {
+        const category = getCategory();
+        const e1 = event1.checked;
+        const e2 = event2.checked;
+
+        if (!e1 && !e2) {
+          return 0;
+        }
+
+        const prices = {
+          student: { event1: 649, event2: 599, both: 1199 },
+          regular: { event1: 699, event2: 599, both: 1249 }
+        };
+
+        const catPrices = prices[category] || prices.student;
+
+        if (e1 && e2) {
+          return catPrices.both;
+        } else if (e1) {
+          return catPrices.event1;
+        } else if (e2) {
+          return catPrices.event2;
+        }
+        return 0;
+      }
+
+      // Update total display
+      function updateTotal() {
+        const total = calculateTotal();
+        totalDisplay.textContent = total + ' ৳';
+        if (total === 0) {
+          totalDisplay.textContent = '0 ৳ (select event)';
+        }
+      }
+
+      // Attach event listeners for recalculation + toggle
+      function attachEvents() {
+        categoryRadios.forEach(radio => {
+          radio.addEventListener('change', function() {
+            toggleStudentIdField();
+            updateTotal();
+          });
+        });
+
+        event1.addEventListener('change', updateTotal);
+        event2.addEventListener('change', updateTotal);
+
+        // also on page load, ensure correct state
+        toggleStudentIdField();
+        updateTotal();
+      }
+
+      // Submit registration to the Node.js backend
+      async function handleSubmit(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById("submitBtn");
+
+        const name = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        const category = getCategory();
+
+        const gender =
+          document.querySelector('input[name="gender"]:checked')?.value || "";
+
+        const paymentMethod =
+          document.getElementById("paymentMethod").value;
+
+        const personalNumber =
+          document.getElementById("personalNumber").value.trim();
+
+        const transactionId =
+          document.getElementById("transactionId").value.trim();
+
+        const selectedEvents = [];
+
+        if (event1.checked) selectedEvents.push("event1");
+        if (event2.checked) selectedEvents.push("event2");
+
+        // Basic validation
+        if (!name || !email || !phone || !personalNumber || !transactionId) {
+          alert("⚠️ Please fill all required fields.");
+          return;
+        }
+
+        if (selectedEvents.length === 0) {
+          alert("⚠️ Please select at least one event.");
+          return;
+        }
+
+        // Student ID validation
+        if (category === "student") {
+          const file = studentIdFile.files[0];
+
+          if (!file) {
+            alert("⚠️ Student category requires a Student ID card.");
+            return;
+          }
+
+          const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "application/pdf"
+          ];
+
+          if (!allowedTypes.includes(file.type)) {
+            alert("⚠️ Please upload a JPG, PNG, or PDF file.");
+            return;
+          }
+
+          if (file.size > 5 * 1024 * 1024) {
+            alert("⚠️ Student ID must be less than 5MB.");
+            return;
+          }
+        }
+
+        // Build multipart form data for the backend
+        const formData = new FormData();
+
+        formData.append("fullName", name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("category", category);
+        formData.append("gender", gender);
+        formData.append("events", JSON.stringify(selectedEvents));
+        formData.append("paymentMethod", paymentMethod);
+        formData.append("personalNumber", personalNumber);
+        formData.append("transactionId", transactionId);
+
+        if (category === "student") {
+          formData.append("studentId", studentIdFile.files[0]);
+        }
+
+        try {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Registering...";
+
+          // Because Express serves this page, a relative API URL works
+          // both locally and after deployment behind the same domain.
+          const response = await fetch("/api/register", {
+            method: "POST",
+            body: formData
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            alert(
+              `✅ Registration Successful!\n\n` +
+              `Registration ID: ${result.registrationId}\n` +
+              `Amount: ${result.amount} ৳\n\n` +
+              `Your registration is pending verification.`
+            );
+
+            form.reset();
+            toggleStudentIdField();
+            updateTotal();
+
+          } else {
+            alert(
+              "❌ Registration failed:\n\n" +
+              (result.message || "Please try again.")
+            );
+          }
+
+        } catch (error) {
+          console.error("Registration error:", error);
+
+          alert(
+            "❌ Could not connect to the server.\n\n" +
+            "Please make sure the StrideX backend is running."
+          );
+
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Register now";
+        }
+      }
+
+      // init
+      function init() {
+        attachEvents();
+        form.addEventListener('submit', handleSubmit);
+      }
+
+      window.addEventListener('DOMContentLoaded', init);
+    })();
+  </script>
+</body>
+</html>
