@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StrideX 10K Registration</title>
+  <title>StrideX Bangladesh</title>
   <style>
     * {
       margin: 0;
@@ -22,7 +22,7 @@
     }
 
     .card {
-      max-width: 760px;
+      max-width: 860px;
       width: 100%;
       background: #ffffff;
       border-radius: 2.5rem;
@@ -42,13 +42,6 @@
       margin-bottom: 1.75rem;
       border-bottom: 2px solid #e9edf2;
       padding-bottom: 1rem;
-    }
-
-    h1 small {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: #4b5b6e;
-      margin-left: 0.5rem;
     }
 
     .form-group {
@@ -88,29 +81,6 @@
       background: #ffffff;
     }
 
-    .inline-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 1.5rem;
-      align-items: center;
-    }
-
-    .inline-group .radio-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 450;
-      color: #1f2a3e;
-    }
-
-    .inline-group input[type="radio"] {
-      width: auto;
-      margin-right: 0.15rem;
-      accent-color: #1f4e7a;
-      transform: scale(1.05);
-      flex-shrink: 0;
-    }
-
     .radio-group {
       display: flex;
       flex-wrap: wrap;
@@ -120,53 +90,140 @@
       border-radius: 2rem;
     }
 
-    .event-checkboxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.8rem 2.8rem;
-      background: #f4f8fe;
-      padding: 0.9rem 1.5rem;
-      border-radius: 2rem;
-      margin-top: 0.25rem;
-    }
-
-    .event-checkboxes label {
+    .radio-item {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-weight: 500;
-      color: #1a2c44;
-      font-size: 0.95rem;
+      gap: 0.5rem;
+      font-weight: 450;
+      color: #1f2a3e;
       cursor: pointer;
     }
 
-    .event-checkboxes input[type="checkbox"] {
-      width: 1.2rem;
-      height: 1.2rem;
+    .radio-item input[type="radio"] {
+      width: auto;
+      accent-color: #1f4e7a;
+      transform: scale(1.05);
+      flex-shrink: 0;
+    }
+
+    /* ----- EVENT CARDS - STANDARDIZED ----- */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 0.25rem;
+    }
+
+    .event-card {
+      background: #f4f8fe;
+      border-radius: 1.5rem;
+      padding: 0.8rem 0.8rem 0.7rem 0.8rem;
+      border: 2px solid transparent;
+      transition: 0.15s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      min-width: 0;
+    }
+
+    .event-card.selected {
+      border-color: #1f5a8a;
+      background: #e5effa;
+      box-shadow: 0 4px 10px rgba(31, 90, 138, 0.12);
+    }
+
+    /* fixed image container - perfect fit */
+    .event-card .img-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      background: #d9e3ef;
+      margin-bottom: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .event-card .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .event-card .event-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      color: #1a2c44;
+      font-size: 0.9rem;
+      width: 100%;
+      padding: 0.1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .event-card input[type="checkbox"] {
+      width: 1.1rem;
+      height: 1.1rem;
       accent-color: #1f5a8a;
       margin: 0;
       flex-shrink: 0;
-      border-radius: 6px;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-    .price-display {
-      background: #e8eff8;
-      padding: 0.9rem 1.8rem;
-      border-radius: 3rem;
-      display: inline-block;
-      font-weight: 600;
-      font-size: 1.5rem;
-      color: #05314f;
-      margin: 0.5rem 0 0.25rem;
-      letter-spacing: 0.5px;
-      border: 1px solid #c0d4e8;
+    .event-card .price-tag {
+      font-size: 0.7rem;
+      background: #dce6f2;
+      padding: 0.12rem 0.7rem;
+      border-radius: 20px;
+      color: #0b2b44;
+      font-weight: 500;
+      margin-top: 0.15rem;
+      white-space: nowrap;
     }
 
-    .price-display span {
-      font-weight: 400;
-      font-size: 1rem;
-      color: #1f4970;
-      margin-right: 0.5rem;
+    /* ----- CURZON DISTANCE OPTIONS ----- */
+    .curzon-distance-wrapper {
+      display: none;
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.2rem;
+      background: #f0f6fe;
+      border-radius: 2rem;
+      border: 1px solid #b8cee6;
+    }
+
+    .curzon-distance-wrapper.visible {
+      display: block;
+    }
+
+    .curzon-distance-wrapper .distance-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .curzon-distance-wrapper .distance-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #0b2b44;
+      cursor: pointer;
+    }
+
+    .curzon-distance-wrapper .distance-group input[type="checkbox"] {
+      width: 1.1rem;
+      height: 1.1rem;
+      accent-color: #1f5a8a;
+      margin: 0;
+      flex-shrink: 0;
     }
 
     .price-box {
@@ -215,22 +272,6 @@
       box-shadow: 0 2px 0 #061a2b;
     }
 
-    .footnote {
-      font-size: 0.8rem;
-      color: #4b627c;
-      margin-top: 1.5rem;
-      text-align: center;
-      border-top: 1px solid #dde4ed;
-      padding-top: 1.2rem;
-    }
-
-    .row-duo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem 1.5rem;
-    }
-
-    /* student id upload - initially hidden */
     .student-id-wrapper {
       display: none;
       margin-top: 0.2rem;
@@ -245,14 +286,6 @@
       display: block;
     }
 
-    .student-id-wrapper label {
-      font-weight: 500;
-      color: #0b2b44;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     .student-id-wrapper input[type="file"] {
       border: 1px solid #b8cee6;
       background: white;
@@ -265,44 +298,85 @@
     .file-hint {
       font-size: 0.8rem;
       color: #3d6184;
-      margin-left: 0.2rem;
       font-weight: 400;
     }
 
-    @media (max-width: 550px) {
-      .card { padding: 1.8rem; }
-      .row-duo { grid-template-columns: 1fr; }
-      .event-checkboxes { flex-direction: column; gap: 0.6rem; }
-      .inline-group { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 700px) {
+      .event-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+      }
+      .event-card .event-label {
+        font-size: 0.75rem;
+        gap: 0.2rem;
+      }
+      .event-card input[type="checkbox"] {
+        width: 0.95rem;
+        height: 0.95rem;
+      }
+      .event-card .price-tag {
+        font-size: 0.6rem;
+        padding: 0.08rem 0.5rem;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 1.5rem; }
+      .event-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+      .event-card {
+        padding: 0.5rem 0.4rem 0.5rem 0.4rem;
+        border-radius: 1rem;
+      }
+      .event-card .img-wrapper {
+        border-radius: 0.8rem;
+      }
+      .event-card .event-label {
+        font-size: 0.65rem;
+      }
+      .event-card input[type="checkbox"] {
+        width: 0.8rem;
+        height: 0.8rem;
+      }
+      .event-card .price-tag {
+        font-size: 0.5rem;
+        padding: 0.05rem 0.4rem;
+      }
+      .curzon-distance-wrapper .distance-group {
+        gap: 0.8rem 1.2rem;
+      }
+      .curzon-distance-wrapper .distance-group label {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>
-      📋 StrideX 10K Registration
-    </h1>
+    <h1>📋 StrideX Registration</h1>
 
     <form id="registrationForm">
       <!-- Name -->
       <div class="form-group">
         <label for="fullName">Full Name <span class="required">*</span></label>
-        <input type="text" id="fullName" placeholder="" required>
+        <input type="text" id="fullName" required>
       </div>
 
       <!-- Email -->
       <div class="form-group">
         <label for="email">Email address <span class="required">*</span></label>
-        <input type="email" id="email" placeholder="" required>
+        <input type="email" id="email" required>
       </div>
 
-      <!-- Phone / WhatsApp -->
+      <!-- Phone -->
       <div class="form-group">
         <label for="phone">Phone / WhatsApp <span class="required">*</span></label>
-        <input type="tel" id="phone" placeholder="" required>
+        <input type="tel" id="phone" required>
       </div>
 
-      <!-- Category: student / regular -->
+      <!-- Category -->
       <div class="form-group">
         <label>Category <span class="required">*</span></label>
         <div class="radio-group" id="categoryGroup">
@@ -315,16 +389,16 @@
         </div>
       </div>
 
-      <!-- Student ID Card upload (conditional) -->
+      <!-- Student ID -->
       <div class="form-group student-id-wrapper visible" id="studentIdWrapper">
         <label for="studentIdFile">
           🪪 Student ID Card Photo <span class="required">*</span>
           <span class="file-hint">(jpg, png, pdf, max 5MB)</span>
         </label>
-        <input type="file" id="studentIdFile" accept=".jpg,.jpeg,.png,.pdf" >
+        <input type="file" id="studentIdFile" accept=".jpg,.jpeg,.png,.pdf">
       </div>
 
-      <!-- Gender: male / female -->
+      <!-- Gender -->
       <div class="form-group">
         <label>Gender <span class="required">*</span></label>
         <div class="radio-group">
@@ -337,28 +411,74 @@
         </div>
       </div>
 
-      <!-- Events (checkboxes) -->
+      <!-- EVENTS with standardized cards -->
       <div class="form-group">
-        <label>Select Events<span class="required">*</span></label>
-        <div  class="event-checkboxes" id="eventCheckboxes">
-          <label>
-            <input type="checkbox" id="event1" value="event1" checked> Season 1
-          </label>
-          <label>
-            <input type="checkbox" id="event2" value="event2"> Season 2
-          </label>
+        <label>Select Events <span class="required">*</span></label>
+        <div class="event-grid" id="eventGrid">
+          <!-- Season 1 -->
+          <div class="event-card selected" data-event="event1">
+            <div class="img-wrapper">
+              <img src="S1.jpeg" alt="Season 1">
+            </div>
+            <div class="event-label">
+              <input type="checkbox" id="event1" value="event1" checked>
+              <span>StrideX 10K Season 1</span>
+            </div>
+            <div class="price-tag">Student 649 / Regular 699</div>
+          </div>
+
+          <!-- Season 2 -->
+          <div class="event-card" data-event="event2">
+            <div class="img-wrapper">
+              <img src="S2.png" alt="Season 2">
+            </div>
+            <div class="event-label">
+              <input type="checkbox" id="event2" value="event2">
+              <span>StrideX 10K Season 2</span>
+            </div>
+            <div class="price-tag">Student 649 / Regular 699</div>
+          </div>
+
+          <!-- Curzon Heritage Run -->
+          <div class="event-card" data-event="curzon">
+            <div class="img-wrapper">
+              <img src="CurzonR.jpeg" alt="Curzon Heritage Run">
+            </div>
+            <div class="event-label">
+              <input type="checkbox" id="eventCurzon" value="curzon">
+              <span>Curzon Heritage Run</span>
+            </div>
+            <div class="price-tag">Student 599 / Regular 649</div>
+          </div>
         </div>
       </div>
 
-      <!-- Dynamic total -->
+      <!-- Curzon Distance Options -->
+      <div class="form-group curzon-distance-wrapper" id="curzonDistanceWrapper">
+        <label>Select Curzon Heritage Run Distance(s) <span class="required">*</span></label>
+        <div class="distance-group" id="distanceGroup">
+          <label class="radio-item">
+            <input type="checkbox" name="curzonDist" value="5km"> 5KM
+          </label>
+          <label class="radio-item">
+            <input type="checkbox" name="curzonDist" value="10km"> 10KM
+          </label>
+          <label class="radio-item">
+            <input type="checkbox" name="curzonDist" value="15km"> 15KM
+          </label>
+        </div>
+        <div style="font-size:0.8rem; color:#3d6184; margin-top:0.3rem;">Each distance counts as one event entry. Select one or more.</div>
+      </div>
+
+      <!-- Total -->
       <div class="price-box">
         <span style="font-weight: 500; color: #1f3a57;">Total Amount</span>
         <span class="total-amount" id="totalDisplay">649 ৳</span>
       </div>
 
-      <!-- Payment method -->
+      <!-- Payment -->
       <div class="form-group">
-        <label for="paymentMethod">Payment Method <p>(Send Money)</p> <span class="required">*</span></label>
+        <label for="paymentMethod">Payment Method <span class="required">*</span></label>
         <select id="paymentMethod">
           <option value="bkash">Bkash — 01624577374</option>
           <option value="nagad">Nagad — 01687414286</option>
@@ -366,24 +486,19 @@
         </select>
       </div>
 
-      <!-- Personal Bkash/Nagad/Rocket number -->
       <div class="form-group">
-        <label for="personalNumber">Your personal Bkash / Nagad / Rocket Number <span class="required">*</span></label>
-        <input type="text" id="personalNumber" placeholder="" required>
+        <label for="personalNumber">Your Bkash / Nagad / Rocket Number <span class="required">*</span></label>
+        <input type="text" id="personalNumber" required>
       </div>
 
-      <!-- Transaction ID -->
       <div class="form-group">
         <label for="transactionId">Transaction ID <span class="required">*</span></label>
-        <input type="text" id="transactionId" placeholder="" required>
+        <input type="text" id="transactionId" required>
       </div>
 
-      <button type="submit" class="btn-submit" id="submitBtn"> Register now</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Register now</button>
     </form>
-
-    <div class="footnote">
-      
-    </div>
+    <div class="footnote"></div>
   </div>
 
   <script>
@@ -391,71 +506,93 @@
       const form = document.getElementById('registrationForm');
       const totalDisplay = document.getElementById('totalDisplay');
 
-      // DOM elements
       const categoryRadios = document.querySelectorAll('input[name="category"]');
       const event1 = document.getElementById('event1');
       const event2 = document.getElementById('event2');
+      const eventCurzon = document.getElementById('eventCurzon');
       const studentIdWrapper = document.getElementById('studentIdWrapper');
       const studentIdFile = document.getElementById('studentIdFile');
+      const curzonWrapper = document.getElementById('curzonDistanceWrapper');
+      const distCheckboxes = document.querySelectorAll('input[name="curzonDist"]');
+      const eventCards = document.querySelectorAll('.event-card');
 
-      // Helper: get selected category value
       function getCategory() {
         for (let radio of categoryRadios) {
           if (radio.checked) return radio.value;
         }
-        return 'student'; // fallback
+        return 'student';
       }
 
-      // Toggle student ID field visibility + required attribute
       function toggleStudentIdField() {
         const category = getCategory();
         if (category === 'student') {
           studentIdWrapper.classList.add('visible');
           studentIdFile.setAttribute('required', 'required');
-          // also add a visual hint
         } else {
           studentIdWrapper.classList.remove('visible');
           studentIdFile.removeAttribute('required');
         }
       }
 
-      // Core pricing logic
+      function toggleCurzonDistance() {
+        if (eventCurzon.checked) {
+          curzonWrapper.classList.add('visible');
+        } else {
+          curzonWrapper.classList.remove('visible');
+          distCheckboxes.forEach(cb => cb.checked = false);
+        }
+        updateTotal();
+      }
+
+      function getCurzonDistanceCount() {
+        let count = 0;
+        distCheckboxes.forEach(cb => { if (cb.checked) count++; });
+        return count;
+      }
+
       function calculateTotal() {
         const category = getCategory();
         const e1 = event1.checked;
         const e2 = event2.checked;
-
-        if (!e1 && !e2) {
-          return 0;
-        }
+        const curzonChecked = eventCurzon.checked;
 
         const prices = {
-          student: { event1: 649, event2: 649, both: 1249 },
-          regular: { event1: 699, event2: 699, both: 1299 }
+          student: { event1: 649, event2: 649, curzon: 599 },
+          regular: { event1: 699, event2: 699, curzon: 649 }
         };
 
         const catPrices = prices[category] || prices.student;
+        let total = 0;
+        if (e1) total += catPrices.event1;
+        if (e2) total += catPrices.event2;
 
-        if (e1 && e2) {
-          return catPrices.both;
-        } else if (e1) {
-          return catPrices.event1;
-        } else if (e2) {
-          return catPrices.event2;
+        if (curzonChecked) {
+          const distCount = getCurzonDistanceCount();
+          if (distCount > 0) {
+            total += catPrices.curzon * distCount;
+          }
         }
-        return 0;
+        return total;
       }
 
-      // Update total display
       function updateTotal() {
         const total = calculateTotal();
-        totalDisplay.textContent = total + ' ৳';
         if (total === 0) {
-          totalDisplay.textContent = '0 ৳ (select event)';
+          totalDisplay.textContent = '0 ৳ (Select Event)';
+        } else {
+          totalDisplay.textContent = total + ' ৳';
         }
+
+        eventCards.forEach(card => {
+          const cb = card.querySelector('input[type="checkbox"]');
+          if (cb && cb.checked) {
+            card.classList.add('selected');
+          } else {
+            card.classList.remove('selected');
+          }
+        });
       }
 
-      // Attach event listeners for recalculation + toggle
       function attachEvents() {
         categoryRadios.forEach(radio => {
           radio.addEventListener('change', function() {
@@ -467,107 +604,114 @@
         event1.addEventListener('change', updateTotal);
         event2.addEventListener('change', updateTotal);
 
-        // also on page load, ensure correct state
+        eventCurzon.addEventListener('change', function() {
+          toggleCurzonDistance();
+        });
+
+        distCheckboxes.forEach(cb => {
+          cb.addEventListener('change', updateTotal);
+        });
+
+        eventCards.forEach(card => {
+          card.addEventListener('click', function(e) {
+            if (e.target.tagName === 'INPUT') return;
+            const cb = this.querySelector('input[type="checkbox"]');
+            if (cb) {
+              cb.checked = !cb.checked;
+              const evt = new Event('change', { bubbles: true });
+              cb.dispatchEvent(evt);
+              if (cb.id === 'eventCurzon') {
+                toggleCurzonDistance();
+              } else {
+                updateTotal();
+              }
+            }
+          });
+        });
+
         toggleStudentIdField();
+        toggleCurzonDistance();
         updateTotal();
       }
 
-      // Submit registration to the Node.js backend
       async function handleSubmit(e) {
         e.preventDefault();
+        const submitBtn = document.getElementById('submitBtn');
 
-        const submitBtn = document.getElementById("submitBtn");
-
-        const name = document.getElementById("fullName").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
         const category = getCategory();
-
-        const gender =
-          document.querySelector('input[name="gender"]:checked')?.value || "";
-
-        const paymentMethod =
-          document.getElementById("paymentMethod").value;
-
-        const personalNumber =
-          document.getElementById("personalNumber").value.trim();
-
-        const transactionId =
-          document.getElementById("transactionId").value.trim();
+        const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const personalNumber = document.getElementById('personalNumber').value.trim();
+        const transactionId = document.getElementById('transactionId').value.trim();
 
         const selectedEvents = [];
+        if (event1.checked) selectedEvents.push('event1');
+        if (event2.checked) selectedEvents.push('event2');
 
-        if (event1.checked) selectedEvents.push("event1");
-        if (event2.checked) selectedEvents.push("event2");
+        let curzonDistances = [];
+        if (eventCurzon.checked) {
+          distCheckboxes.forEach(cb => {
+            if (cb.checked) curzonDistances.push(cb.value);
+          });
+          if (curzonDistances.length === 0) {
+            alert('⚠️ Please select at least one distance for Curzon Heritage Run (5km, 10km, or 15km).');
+            return;
+          }
+          selectedEvents.push('curzon');
+        }
 
-        // Basic validation
         if (!name || !email || !phone || !personalNumber || !transactionId) {
-          alert("⚠️ Please fill all required fields.");
+          alert('⚠️ Please fill all required fields.');
           return;
         }
-
         if (selectedEvents.length === 0) {
-          alert("⚠️ Please select at least one event.");
+          alert('⚠️ Please select at least one event.');
           return;
         }
 
-        // Student ID validation
-        if (category === "student") {
+        if (category === 'student') {
           const file = studentIdFile.files[0];
-
           if (!file) {
-            alert("⚠️ Student category requires a Student ID card.");
+            alert('⚠️ Student category requires a Student ID card.');
             return;
           }
-
-          const allowedTypes = [
-            "image/jpeg",
-            "image/png",
-            "application/pdf"
-          ];
-
+          const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
           if (!allowedTypes.includes(file.type)) {
-            alert("⚠️ Please upload a JPG, PNG, or PDF file.");
+            alert('⚠️ Please upload a JPG, PNG, or PDF file.');
             return;
           }
-
           if (file.size > 5 * 1024 * 1024) {
-            alert("⚠️ Student ID must be less than 5MB.");
+            alert('⚠️ Student ID must be less than 5MB.');
             return;
           }
         }
 
-        // Build multipart form data for the backend
         const formData = new FormData();
-
-        formData.append("fullName", name);
-        formData.append("email", email);
-        formData.append("phone", phone);
-        formData.append("category", category);
-        formData.append("gender", gender);
-        formData.append("events", JSON.stringify(selectedEvents));
-        formData.append("paymentMethod", paymentMethod);
-        formData.append("personalNumber", personalNumber);
-        formData.append("transactionId", transactionId);
-
-        if (category === "student") {
-          formData.append("studentId", studentIdFile.files[0]);
+        formData.append('fullName', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('category', category);
+        formData.append('gender', gender);
+        formData.append('events', JSON.stringify(selectedEvents));
+        formData.append('curzonDistances', JSON.stringify(curzonDistances));
+        formData.append('paymentMethod', paymentMethod);
+        formData.append('personalNumber', personalNumber);
+        formData.append('transactionId', transactionId);
+        if (category === 'student') {
+          formData.append('studentId', studentIdFile.files[0]);
         }
 
         try {
           submitBtn.disabled = true;
-          submitBtn.textContent = "Registering...";
-
-          // Because Express serves this page, a relative API URL works
-          // both locally and after deployment behind the same domain.
-          const response = await fetch("/api/register", {
-            method: "POST",
+          submitBtn.textContent = 'Registering...';
+          const response = await fetch('/api/register', {
+            method: 'POST',
             body: formData
           });
-
           const result = await response.json();
-
           if (result.success) {
             alert(
               `✅ Registration Successful!\n\n` +
@@ -575,33 +719,22 @@
               `Amount: ${result.amount} ৳\n\n` +
               `Your registration is pending verification.`
             );
-
             form.reset();
             toggleStudentIdField();
+            toggleCurzonDistance();
             updateTotal();
-
           } else {
-            alert(
-              "❌ Registration failed:\n\n" +
-              (result.message || "Please try again.")
-            );
+            alert('❌ Registration failed:\n\n' + (result.message || 'Please try again.'));
           }
-
         } catch (error) {
-          console.error("Registration error:", error);
-
-          alert(
-            "❌ Could not connect to the server.\n\n" +
-            "Please make sure the StrideX backend is running."
-          );
-
+          console.error('Registration error:', error);
+          alert('❌ Could not connect to the server.\n\nPlease make sure the StrideX backend is running.');
         } finally {
           submitBtn.disabled = false;
-          submitBtn.textContent = "Register now";
+          submitBtn.textContent = 'Register now';
         }
       }
 
-      // init
       function init() {
         attachEvents();
         form.addEventListener('submit', handleSubmit);
