@@ -106,10 +106,10 @@
       flex-shrink: 0;
     }
 
-    /* ----- EVENT CARDS - STANDARDIZED ----- */
+    /* ----- EVENT CARDS - STANDARDIZED (2 cards) ----- */
     .event-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.2rem;
       margin-top: 0.25rem;
     }
@@ -135,7 +135,6 @@
       box-shadow: 0 4px 10px rgba(31, 90, 138, 0.12);
     }
 
-    /* fixed image container - perfect fit */
     .event-card .img-wrapper {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -187,43 +186,17 @@
       white-space: nowrap;
     }
 
-    /* ----- CURZON DISTANCE OPTIONS ----- */
-    .curzon-distance-wrapper {
-      display: none;
-      margin-top: 0.5rem;
-      padding: 0.75rem 1.2rem;
-      background: #f0f6fe;
-      border-radius: 2rem;
-      border: 1px solid #b8cee6;
-    }
-
-    .curzon-distance-wrapper.visible {
-      display: block;
-    }
-
-    .curzon-distance-wrapper .distance-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem 2.5rem;
-      margin-top: 0.3rem;
-    }
-
-    .curzon-distance-wrapper .distance-group label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #0b2b44;
-      cursor: pointer;
-    }
-
-    .curzon-distance-wrapper .distance-group input[type="checkbox"] {
-      width: 1.1rem;
-      height: 1.1rem;
-      accent-color: #1f5a8a;
-      margin: 0;
-      flex-shrink: 0;
+    /* discount badge */
+    .discount-badge {
+      background: #e9f0e9;
+      color: #0f4d2e;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-left: 0.4rem;
+      border: 1px solid #b2d0b2;
     }
 
     .price-box {
@@ -303,7 +276,7 @@
 
     @media (max-width: 700px) {
       .event-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.8rem;
       }
       .event-card .event-label {
@@ -323,7 +296,7 @@
     @media (max-width: 500px) {
       .card { padding: 1.5rem; }
       .event-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.5rem;
       }
       .event-card {
@@ -343,12 +316,6 @@
       .event-card .price-tag {
         font-size: 0.5rem;
         padding: 0.05rem 0.4rem;
-      }
-      .curzon-distance-wrapper .distance-group {
-        gap: 0.8rem 1.2rem;
-      }
-      .curzon-distance-wrapper .distance-group label {
-        font-size: 0.8rem;
       }
     }
   </style>
@@ -411,9 +378,11 @@
         </div>
       </div>
 
-      <!-- EVENTS with standardized cards -->
+      <!-- EVENTS - only Season 1 & Season 2 (Curzon removed) -->
       <div class="form-group">
-        <label>Select Events <span class="required">*</span></label>
+        <label>Select Events <span class="required">*</span>
+          <span class="discount-badge">✨ 100৳ off when you choose both!</span>
+        </label>
         <div class="event-grid" id="eventGrid">
           <!-- Season 1 -->
           <div class="event-card selected" data-event="event1">
@@ -438,36 +407,8 @@
             </div>
             <div class="price-tag">Stu 649 / Reg 699</div>
           </div>
-
-          <!-- Curzon Heritage Run -->
-          <div class="event-card" data-event="curzon">
-            <div class="img-wrapper">
-              <img src="CurzonR.jpeg" alt="Curzon Heritage Run">
-            </div>
-            <div class="event-label">
-              <input type="checkbox" id="eventCurzon" value="curzon">
-              <span>Curzon Heritage Run</span>
-            </div>
-            <div class="price-tag">Stu 599 / Reg 649</div>
-          </div>
         </div>
-      </div>
-
-      <!-- Curzon Distance Options -->
-      <div class="form-group curzon-distance-wrapper" id="curzonDistanceWrapper">
-        <label>Select Curzon Heritage Run Distance(s) <span class="required">*</span></label>
-        <div class="distance-group" id="distanceGroup">
-          <label class="radio-item">
-            <input type="checkbox" name="curzonDist" value="5km"> 5KM
-          </label>
-          <label class="radio-item">
-            <input type="checkbox" name="curzonDist" value="10km"> 10KM
-          </label>
-          <label class="radio-item">
-            <input type="checkbox" name="curzonDist" value="15km"> 15KM
-          </label>
-        </div>
-        <div style="font-size:0.8rem; color:#3d6184; margin-top:0.3rem;">Each distance counts as one event entry. Select one or more.</div>
+        <div style="font-size:0.8rem; color:#3d6184; margin-top:0.3rem;">Select both events to get 100৳ discount.</div>
       </div>
 
       <!-- Total -->
@@ -509,12 +450,12 @@
       const categoryRadios = document.querySelectorAll('input[name="category"]');
       const event1 = document.getElementById('event1');
       const event2 = document.getElementById('event2');
-      const eventCurzon = document.getElementById('eventCurzon');
       const studentIdWrapper = document.getElementById('studentIdWrapper');
       const studentIdFile = document.getElementById('studentIdFile');
-      const curzonWrapper = document.getElementById('curzonDistanceWrapper');
-      const distCheckboxes = document.querySelectorAll('input[name="curzonDist"]');
       const eventCards = document.querySelectorAll('.event-card');
+
+      // DISCOUNT: 100 tk when both events selected
+      const DISCOUNT = 100;
 
       function getCategory() {
         for (let radio of categoryRadios) {
@@ -534,31 +475,14 @@
         }
       }
 
-      function toggleCurzonDistance() {
-        if (eventCurzon.checked) {
-          curzonWrapper.classList.add('visible');
-        } else {
-          curzonWrapper.classList.remove('visible');
-          distCheckboxes.forEach(cb => cb.checked = false);
-        }
-        updateTotal();
-      }
-
-      function getCurzonDistanceCount() {
-        let count = 0;
-        distCheckboxes.forEach(cb => { if (cb.checked) count++; });
-        return count;
-      }
-
       function calculateTotal() {
         const category = getCategory();
         const e1 = event1.checked;
         const e2 = event2.checked;
-        const curzonChecked = eventCurzon.checked;
 
         const prices = {
-          student: { event1: 649, event2: 649, curzon: 599 },
-          regular: { event1: 699, event2: 699, curzon: 649 }
+          student: { event1: 649, event2: 649 },
+          regular: { event1: 699, event2: 699 }
         };
 
         const catPrices = prices[category] || prices.student;
@@ -566,11 +490,9 @@
         if (e1) total += catPrices.event1;
         if (e2) total += catPrices.event2;
 
-        if (curzonChecked) {
-          const distCount = getCurzonDistanceCount();
-          if (distCount > 0) {
-            total += catPrices.curzon * distCount;
-          }
+        // apply discount if both selected
+        if (e1 && e2) {
+          total = Math.max(0, total - DISCOUNT);
         }
         return total;
       }
@@ -583,6 +505,7 @@
           totalDisplay.textContent = total + ' ৳';
         }
 
+        // highlight selected cards
         eventCards.forEach(card => {
           const cb = card.querySelector('input[type="checkbox"]');
           if (cb && cb.checked) {
@@ -604,14 +527,7 @@
         event1.addEventListener('change', updateTotal);
         event2.addEventListener('change', updateTotal);
 
-        eventCurzon.addEventListener('change', function() {
-          toggleCurzonDistance();
-        });
-
-        distCheckboxes.forEach(cb => {
-          cb.addEventListener('change', updateTotal);
-        });
-
+        // click on card toggles checkbox
         eventCards.forEach(card => {
           card.addEventListener('click', function(e) {
             if (e.target.tagName === 'INPUT') return;
@@ -620,17 +536,12 @@
               cb.checked = !cb.checked;
               const evt = new Event('change', { bubbles: true });
               cb.dispatchEvent(evt);
-              if (cb.id === 'eventCurzon') {
-                toggleCurzonDistance();
-              } else {
-                updateTotal();
-              }
+              updateTotal();
             }
           });
         });
 
         toggleStudentIdField();
-        toggleCurzonDistance();
         updateTotal();
       }
 
@@ -650,18 +561,6 @@
         const selectedEvents = [];
         if (event1.checked) selectedEvents.push('event1');
         if (event2.checked) selectedEvents.push('event2');
-
-        let curzonDistances = [];
-        if (eventCurzon.checked) {
-          distCheckboxes.forEach(cb => {
-            if (cb.checked) curzonDistances.push(cb.value);
-          });
-          if (curzonDistances.length === 0) {
-            alert('⚠️ Please select at least one distance for Curzon Heritage Run (5km, 10km, or 15km).');
-            return;
-          }
-          selectedEvents.push('curzon');
-        }
 
         if (!name || !email || !phone || !personalNumber || !transactionId) {
           alert('⚠️ Please fill all required fields.');
@@ -696,7 +595,6 @@
         formData.append('category', category);
         formData.append('gender', gender);
         formData.append('events', JSON.stringify(selectedEvents));
-        formData.append('curzonDistances', JSON.stringify(curzonDistances));
         formData.append('paymentMethod', paymentMethod);
         formData.append('personalNumber', personalNumber);
         formData.append('transactionId', transactionId);
@@ -720,8 +618,10 @@
               `Your registration is pending verification.`
             );
             form.reset();
+            // reset checkboxes: keep event1 checked (default) and event2 unchecked
+            event1.checked = true;
+            event2.checked = false;
             toggleStudentIdField();
-            toggleCurzonDistance();
             updateTotal();
           } else {
             alert('❌ Registration failed:\n\n' + (result.message || 'Please try again.'));
